@@ -7,7 +7,7 @@ from character import *
 
 
 # On veut créer une action qui cause du dommage à un adversaire et qui restaure une portion de ce dommage à l'attaquant. On a déjà une classe qui inflige du dommage directement, on va donc en hériter et ajuster l'exécution de sa méthode use.
-class DrainingMove(...): # TODO: Hériter de la bonne classe
+class DrainingMove(SimpleDamagingMove): # TODO: Hériter de la bonne classe
 	"""
 	Applique du dommage normalement à un adversaire et restaure une partie de ce dommage en HP à l'utilisateur du move.
 	
@@ -18,6 +18,9 @@ class DrainingMove(...): # TODO: Hériter de la bonne classe
 	"""
 
 	# TODO: Le __init__ qui initialise la classe de base et l'attribut drain_factor
+	def __init__(self, name, power, drain_factor, min_level):
+		self.drain_factor = drain_factor
+		super().__init__(name, power, min_level)
 
 	# TODO: Surcharger la méthode `use` pour appliquer le dommage en réutilisant les méthodes de la classe de base. Il faut ensuite restaurer les points absorbés. HP restaurés = dommage * draining_factor
 
